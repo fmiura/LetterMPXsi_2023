@@ -14,8 +14,8 @@
 library(tidyverse)
 
 ###1. Data -----
-## raw data offig-5
-fig5_data <- data.frame( #Retrived from Figure-5 in Ward et al. 
+## raw data of Fig-5
+fig5_data <- data.frame( #Retrived from Fig-5 in Ward et al. 
   SI=c(3,3,1,4,5,2,10,6,7,6,8,11,10)
 )
 ## posterior samples of the best fit model (gamma)
@@ -27,8 +27,6 @@ gamma_output <- output_ukhsa %>%
   summarise(mean(alpha),median(alpha),mean(beta),median(beta)) #0.810 0.804 0.103 0.101 #all chains
 shape_gam <- gamma_output$`median(alpha)` #shape = 0.804
 rate_gam <- gamma_output$`median(beta)`# rate = 0.101
-#shape_gam * rate_gam^(-1) #mean = 7.952086
-#(shape_gam * (rate_gam^(-1))^2)^(1/2) #sd = 8.86753
 
 ##Weibull; shape=0.912, scale=7.850 (source: Suup B table, Weibull (ICC))
 sig <- 9.0
